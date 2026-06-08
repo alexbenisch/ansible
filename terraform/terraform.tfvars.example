@@ -1,0 +1,8 @@
+# hcloud_token is read from HCLOUD_TOKEN env var — do not put it here
+ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+environment         = "production"
+location            = "nbg1"
+image               = "ubuntu-24.04"
+server_type         = "cx22"
+db_server_type      = "cx32"
+webserver_count     = 2
