@@ -1,0 +1,10 @@
+---
+- name: Apply CIS Ubuntu 24.04 Level 1 benchmark
+  hosts: all
+  become: true
+  vars:
+    ubuntu24cis_level_1: true
+    ubuntu24cis_level_2: false
+
+  roles:
+    - ansible-lockdown.ubuntu24cis

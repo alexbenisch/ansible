@@ -1,0 +1,5 @@
+---
+roles:
+  - name: ansible-lockdown.ubuntu24cis
+    src: https://github.com/ansible-lockdown/UBUNTU24-CIS
+    version: main

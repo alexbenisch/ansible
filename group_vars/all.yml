@@ -1,0 +1,15 @@
+---
+# CIS Level 1 only
+ubuntu24cis_level_1: true
+ubuntu24cis_level_2: false
+
+# Rule overrides — tune these if services break
+ubuntu24cis_rule_1_1_1_1: true   # disable unused filesystems
+ubuntu24cis_rule_2_1_1: true     # ensure time sync is in use
+ubuntu24cis_ssh_loglevel: INFO
+ubuntu24cis_sshd_idle_timeout_value: 300
+ubuntu24cis_sshd_client_alive_count_max: 3
+
+# Allowlist services that must stay running
+ubuntu24cis_firewall_package: ufw
+ubuntu24cis_allow_autofs: false
