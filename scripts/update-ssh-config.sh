@@ -3,7 +3,7 @@ set -euo pipefail
 
 TERRAFORM_DIR="$(cd "$(dirname "$0")/../terraform" && pwd)"
 SSH_CONFIG="$HOME/.ssh/config"
-IDENTITY_FILE="$HOME/.ssh/id_ed25519"
+IDENTITY_FILE="$HOME/.ssh/ansible_hetzner"
 MARKER_START="# BEGIN ansible-hetzner"
 MARKER_END="# END ansible-hetzner"
 
