@@ -1,0 +1,8 @@
+---
+- name: Configure dbservers
+  hosts: dbservers
+  become: true
+
+  roles:
+    - common
+    - dbserver

@@ -25,13 +25,13 @@ variable "image" {
 variable "server_type" {
   description = "Hetzner server type for webservers"
   type        = string
-  default     = "cx22"
+  default     = "cx23"
 }
 
 variable "db_server_type" {
   description = "Hetzner server type for dbserver"
   type        = string
-  default     = "cx32"
+  default     = "cx33"
 }
 
 variable "webserver_count" {

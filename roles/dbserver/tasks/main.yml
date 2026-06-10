@@ -1,0 +1,22 @@
+---
+- name: Install PostgreSQL
+  apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+      - python3-psycopg2
+    state: present
+
+- name: Start and enable PostgreSQL
+  service:
+    name: postgresql
+    state: started
+    enabled: true
+
+- name: Allow PostgreSQL from webservers only
+  ufw:
+    rule: allow
+    port: "5432"
+    proto: tcp
+    src: "{{ item }}"
+  loop: "{{ groups['webservers'] | map('extract', hostvars, 'ansible_host') | list }}"

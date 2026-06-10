@@ -1,0 +1,10 @@
+[webservers]
+web01 ansible_host=78.47.144.108
+web02 ansible_host=178.104.225.93
+
+[dbservers]
+db01 ansible_host=178.104.236.44
+
+[all:vars]
+ansible_user=root
+ansible_python_interpreter=/usr/bin/python3
