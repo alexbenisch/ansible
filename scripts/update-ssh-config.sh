@@ -25,7 +25,7 @@ build_block() {
 
 Host web$(printf "%02d" $idx)
   HostName $ip
-  User root
+  User ansible
   IdentityFile $IDENTITY_FILE
   IdentitiesOnly yes
   StrictHostKeyChecking no
@@ -37,7 +37,7 @@ EOF
 
 Host db01
   HostName $DBSERVER_IP
-  User root
+  User ansible
   IdentityFile $IDENTITY_FILE
   IdentitiesOnly yes
   StrictHostKeyChecking no

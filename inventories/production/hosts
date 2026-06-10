@@ -6,5 +6,5 @@ web02 ansible_host=178.104.225.93
 db01 ansible_host=178.104.236.44
 
 [all:vars]
-ansible_user=root
+ansible_user=ansible
 ansible_python_interpreter=/usr/bin/python3

@@ -1,0 +1,51 @@
+---
+- name: Bootstrap servers - create ansible user and disable root SSH login
+  hosts: all
+  remote_user: root
+  become: false
+
+  vars:
+    ansible_user_name: ansible
+    ansible_user_pubkey: "{{ lookup('file', '~/.ssh/ansible_hetzner.pub') }}"
+
+  tasks:
+    - name: Create ansible user
+      user:
+        name: "{{ ansible_user_name }}"
+        shell: /bin/bash
+        create_home: true
+        system: false
+
+    - name: Set up authorized key for ansible user
+      authorized_key:
+        user: "{{ ansible_user_name }}"
+        key: "{{ ansible_user_pubkey }}"
+        state: present
+        exclusive: true
+
+    - name: Grant passwordless sudo
+      copy:
+        dest: /etc/sudoers.d/ansible
+        content: "ansible ALL=(ALL) NOPASSWD:ALL\n"
+        mode: "0440"
+        validate: visudo -cf %s
+
+    - name: Disable root SSH login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PermitRootLogin'
+        line: 'PermitRootLogin no'
+        state: present
+      notify: restart sshd
+
+    - name: Verify ansible user can sudo before locking root out
+      command: id
+      become: true
+      become_user: root
+      become_method: sudo
+
+  handlers:
+    - name: restart sshd
+      service:
+        name: ssh
+        state: restarted

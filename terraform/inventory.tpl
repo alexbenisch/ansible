@@ -7,5 +7,5 @@ ${ip}
 ${dbserver}
 
 [all:vars]
-ansible_user=root
+ansible_user=ansible
 ansible_python_interpreter=/usr/bin/python3
